@@ -48,7 +48,7 @@ LaTeX是一款高质量排版软件，非常受欢迎，尤其是在科学家中
 
 ## 这本书是写给谁的 ##
 
-如果你已经知道$\LaTeX$的基本知识，如果你想快速有效地解决你的问题，这本书对你来说是完美的。
+如果你已经知道LaTeX的基本知识，如果你想快速有效地解决你的问题，这本书对你来说是完美的。
 
 如果您是一名高级读者，您可以使用本书的示例驱动格式将您的技能提升到下一个级别。
 
@@ -118,3 +118,208 @@ LaTeX是一款高质量排版软件，非常受欢迎，尤其是在科学家中
 
 ## 问题 ##
 如果您对本书的任何方面有任何问题，可以通过<questions@packtpub.com>与我们联系，我们将尽力解决此问题。
+
+# 文档类型的多样性 #
+
+通常，文档的大小、格式、剖面和设计可能会有所不同。您可以对任何文档类型使用LaTeX。在本章中，您将找到各种文档的样式。
+
+我们将具体讨论以下主题：
+
+- 写一篇短文
+- 写一篇论文
+- 设计一本书
+- 制作一个beamer
+- 设计一份简历
+- 写一封信
+- 制作一份传单
+- 制作一张大型海报
+
+## Introduction ##
+
+LaTeX已经存在很多年了。随着时间的推移，开发人员和作者为LaTeX代码库提供了大量扩展。
+
+这些扩展包括以下内容：
+
+- documentclass：这是一个样式文件，它是文档的框架。它通常带有有意义的默认设置，可以在加载时通过选项进行更改。其宏可以通过`\renewcommand`进行自定义。它通常为作者提供修改设置的命令。
+- Package: 这是一个具有特定用途的样式文件，可以在文档类之外加载。包可以组合。大多数情况下，我们使用`\usepackage`命令加载许多包。
+- Bundle: 这是一组密切相关的包或类。在我们的第一个样式中，写一篇短文，您将了解一些捆绑包。
+- Template: 这是一个用虚拟文本填充的文档，您可以将其作为起点，只需填充您自己的标题、文本、公式和图像。我们将看一看第二个样式中的模板，写一篇论文。
+
+这些附加组件非常有价值！它们是LaTeX持久成功的原因之一。我们都同意，学习LaTeX可能很难，因为它的学习曲线很陡。但是，如果您不重新发明轮子，从一个好的模板或类以及一组高质量的包开始，您可以很快获得很好的结果。
+
+这本书的目的是在这方面帮助你。
+
+## Getting ready ##
+
+为了能够使用LaTeX，您需要在计算机上安装以下组件：
+
+- TeX和LaTeX软件，在LaTeX编辑器中统称为TeX发行版
+- LaTeX编辑器，您可以使用任何文本编辑器
+- 用于查看最终输出的PDF查看器
+
+如果你已经安装了这些，太好了！在这种情况下，您可以跳过下一段，立即进入第一个样式。
+
+您的计算机上可能已经安装了PDF阅读器，如Foxit reader、Adobe reader或Mac上的预览应用程序。此外，大多数编辑器都带有集成的PDF预览器。那么，让我们看看TEX软件和编辑器。
+
+## TeX and LaTeX distributions ##
+
+TeX和LaTeX软件的集合已准备就绪，易于安装。他们的网站提供有关安装和更新它们的信息。您可以为您的系统选择下载站点：
+
+- TeX Live：在<http://tug.org/texlive/>，您可以找到在Windows、Linux、Mac OS X和其他Unix系统上运行的跨平台TeX发行版的下载信息和安装说明。它由TeX用户组（TUG）支持。
+- MacTex：这是基于TeX Live，并已针对Mac OS X进行了大量定制。基本信息可在<http://www.tug.org/mactex/>。
+- MikTeX：有关该Windows特定发行版的下载和文档，请访问<http://www.miktex.org/>。
+- Pro TeXt：这仅适用于Windows，它源自MiKTeX，但在安装过程中，proTeXt更为用户友好。其主页可在以下网址找到：<http://www.tug.org/protext/>。
+
+如果你有Mac电脑，我建议你选择MacTeX；否则，我建议使用TeX Live，因为TUG的支撑特别好。
+
+描述设置超出了本书的范围。对于TeX Live，您可以在Packt Publishing的《LaTeX初学者指南》中找到带有屏幕截图的分步说明。通常，当您访问上面列出的TeX发行版的Internet地址时，您可以找到详细的设置说明。
+
+最后，在Linux上，如Ubuntu、Debian、Red Hat、Fedora和SUSE版本，通常有一个基于TeX Live的软件包，可通过操作系统存储库获得。虽然它通常不像通过TeX Live网站或TeX Live DVD进行的安装那样是最新的，但使用Linux软件包管理器（通常用于安装任何软件）进行安装非常容易。
+
+## LaTeX editors ##
+
+有许多LaTeX编辑器，从小型、快速到功能丰富的编辑器。TeX发行版已经提供了我使用的精细编辑器TeXworks。它可以与TeX或Linux上的软件包管理器一起设置，并且可以从<http://www.tug.org/texworks/>。
+
+我在我的博客<http://texblog.net/LaTeX-link-archive/distribution-editor-viewer/>上有一系列指向LaTeX编辑器和其他软件的链接，您可以在这里寻找在操作系统上运行的替代编辑器。
+
+此外，还有纯在线的LaTeX编辑器，可以在web浏览器中运行，因此您甚至可以在平板电脑和智能手机上使用它们。最值得注意的LaTeX编辑器如下所示：
+
+- <https://www.overleaf.com>，具有实时协作编辑和富文本模式，可直接在编辑器中呈现标题、方程式和其他格式.
+- <https://www.sharelatex.com>，还具有实时协作和修订历史记录，用于跟踪更改
+
+-
+*在我翻译此文档时，overleaf与sharelatex已经合并为一家*
+
+- 目前国内做的还可以是的<texpage.com>，目前还处在上升期，还需要时间来发展与改进。
+
+如果您在设置和使用LaTeX或任何其他编辑器方面需要任何帮助，您可以访问LaTeX web论坛。在第12章“在互联网上获得支持”中，您可以找到这些论坛的链接，并了解如何使用它们。你也可以在那些论坛上找到我。
+
+如果您想在学习LaTeX方面获得帮助，可以查看LaTeX初学者指南，网址为<https://www.packtpub.com/hardware-and-creative/latex-beginnersguide>。
+
+完成安装后，可以启动编辑器并从LaTeX样式开始。
+
+# 写一篇短文 #
+
+虽然LaTeX对于大型文档非常有用，但对于较小的文档也同样有用，并且您可以使用所有的功能。例如，写家庭作业或制作研讨会讲义不需要像书一样的章节，而且布局也不太宽敞。
+
+因此，我们将选择一个最适合手头任务的文档类。有一些类包涵盖了常用的文档类型。每个LaTeX安装都包含带有标准类的基本捆绑包。有文章、书籍、报告、信件等的类文件。它是稳定的东西；它已经很多年没有真正改变了。如果你不在乎最新的款式，这就足够了。它甚至可以在一个有十年历史的乳胶装置上运行。
+
+在这个样式中，我们将使用一个`KOMA Script`类。这是一组最初设计的类，其目的是替换标准类并提供更多功能。与相当静态的基本包不同，`KOMA Script`近年来得到了广泛的开发。它变得功能丰富，并获得了优秀的用户界面。它的部分功能在包中提供，也可以与其他类一起使用。您可以通过前缀scr识别`KOMA Script`的类和包。此前缀表示`script`，它是此捆绑包的初始名称。
+
+## 怎么做 ##
+
+我们将从一个完整的小文档开始，该文档已经使用了各种功能。这可以是您的模板，稍后您可以将自己的文本添加到其中。当我们一步一步地浏览文档时，您可以直接用编辑器打开完整的代码，因此不需要键入它。它包含在本书页面提供的代码包中<https://www.packtpub.com> 在书页上<http://latexcookbook.net>. 执行以下步骤以创建小文档：
+
+1. 从文档类开始。我们将使用`KOMA Script` 类的`SCRARTCL`，纸张大小为A4，基本字体大小为12磅，段落间距代替默认段落缩进：
+
+    ```latex
+   \documentclass[paper=a4,oneside,fontsize=12pt,parskip=full]{scrartcl}
+   ```
+
+2. 开始文档：
+
+    ```latex
+   \begin{document}
+   ```
+
+3. 让LaTeX使用以下命令打印目录：
+
+    ```latex
+   \tableofcontents
+   ```
+
+4. 开始一个没有编号的部分：
+
+    ```latex
+   \addsec{Introduction}
+   ```
+
+5. 添加一些文本：
+
+    ```latex
+   This document will be our starting point for simple documents. It is suitable for a single page or up to a couple of dozen pages. The text will be divided into sections.
+   ```
+
+6. 以文本开始自动编号的部分：
+
+    ```latex
+   \section{The first section}
+   This first text will contain
+   ```
+
+7. 使用逐项列出环境添加项目符号列表。每个列表项都以`\item`开头。使用`\ref{label}`，我们将引用稍后创建的标签：
+
+    ```latex
+     \begin{itemize}
+         \item a table of contents,
+         \item a bulleted list,
+         \item headings and some text and math in section,
+         \item referencing such as to section 
+         \ref{sec:maths} and equation (\ref{eq:integral}).
+     \end{itemize}
+     ```
+
+8. 继续文本并开始另一个编号部分：
+
+    ```latex
+     We can use this document as a template for filling in our own content.
+     \section{Some maths}
+     ```
+
+9. 设置一个标签，以便我们可以在需要参考本节时参考此点：
+
+     ```latex
+     \label{sec:maths}
+    ```
+
+10. 继续读课文。我们将在课文中开始使用一些数学表达式。我们用前缀反斜杠将它们括在括号中，即`\(…\)`。
+
+     ```latex
+     When we write a scientific or technical document, we usually include math formulas. To get a brief glimpse of the look of maths, we will look at an integral approximation of a function \(f(x)\) as a sum with weights \(w_i\):
+     ```
+
+11. 使用方程式环境编写数学方程式。再次使用以下命令放置标签：
+
+    ```latex
+    \begin{equation}
+    \label{eq:integral}
+    \int_a^b f(x)\,\mathrm{d}x \approx (b-a)
+    \sum_{i=0}^n w_i f(x_i)
+    \end{equation}
+    ```
+
+12. 结束文档：
+
+    ```latex
+    end{document}
+    ```
+
+13. 编辑文件。输出的第一页如下所示：
+
+## 它是如何工作的 ##
+
+在第一行中，我们加载了文档类 `scratcl`。在方括号中，我们设置了指定A4纸张大小（单面打印）和12磅字体大小的选项。最后，我们选择在输出中的段落之间有一个完整的行，以便我们可以轻松地区分段落。
+
+**Notes:** 默认设置是段落之间没有空格，每个段落开头都有一个小缩进。取消选中`parskip`选项以查看它。我们选择跳过段落是因为很多人在处理电子邮件时已经习惯了，而缩进需要占用行空间，这是小型电子设备上的宝贵资源。
+
+不费吹灰之力，我们以目录开始了正文。虽然编号的节由`\section`命令启动，但我们可以使用带星号的版本 `\section*` 启动未编号的节。但是，我们对第一个未编号的部分使用了*KOMA Script*命令`\addsec`。这是因为，与 `\section*` 相反，`\addsec` 命令在目录中生成一个条目。
+
+一个空行告诉$\LaTeX$将段落打断。由于项目符号列表是一种清晰显示要点的好方法，我们为此使用了逐项列出的环境。所有环境都以`\begin`命令开始，并以`\end`命令结束。
+
+**Tips：** 如果希望有编号的列表，请使用`enumerate`环境。
+
+公式环境已用于显示自动编号的公式。我们使用`\label`命令设置了一个不可见的锚标记，这样我们就可以通过`\ref`命令使用其标签名称来引用它，并在输出中获得方程式编号。
+
+**Tips：** 选择标签标识符：使用前缀来标识各种标签是一种很好的做法，例如等式的`eq:name`、数字的`fig:name`、表格的`tab:name`等等。避免在名称中使用特殊字符，例如重音字母。
+
+文本行中的小公式包含在`\(…\)`中，它提供了内联数学模式。美元符号`$…$`，可以用来代替`\(…\)`，这使得打字更容易。但是，使用括号可以更容易地理解数学模式的开始和结束位置，当许多数学表达式分散在文本中时，这可能是有益的。
+
+有关数学排版的更多信息，请参阅第10章，高等数学，特别是公式的样式。
+
+## 另见 ##
+
+`\begin{document}`命令之前的文档部分称为前言。它包含全局设置。通过在文档前言中添加几行，我们可以改进文档并修改总体外观。第2章，调整文本，从对小文档有益的添加开始。它们支持直接输入重音字符和unicode符号，并改进对齐和断字。
+
+在第3章“调整字体”中，您可以找到更改整个文档或某些元素字体的方法。
+
+有关进一步的自定义任务，如修改页面布局和添加标题页，请参阅本章中的“设计书的配方”。我们将在一本书的例子中看看这样的设置。
